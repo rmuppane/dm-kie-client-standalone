@@ -1,10 +1,12 @@
 package client;
 
 import org.drools.compiler.kproject.ReleaseIdImpl;
+import org.drools.core.base.RuleNameEndsWithAgendaFilter;
 import org.kie.api.KieServices;
 import org.kie.api.builder.ReleaseId;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.AgendaFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +35,10 @@ public class DRLRuleTest {
 			
 			// Fire all rules:
 			kSession.fireAllRules();
+			
+			// AgendaFilter filter = new RuleNameEndsWithAgendaFilter("suffix", false);
+			// kSession.fireAllRules(filter);
+			
 			kSession.dispose();
 			System.out.println("Approval status [ " + loanApp.getLoanApproval() + "]");
 		} catch (Throwable t) {
